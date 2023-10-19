@@ -13,19 +13,25 @@ public class LinearEquation {
     }
 
     private double distance(){
-        return Math.sqrt(Math.pow((x2-x1), 2.0) + Math.pow((y2-y1), 2.0));
+        return round(Math.sqrt(Math.pow((x2-x1), 2.0) + (Math.pow((y2-y1), 2.0))));
     }
 
     private double slope(){
-        return (y2-y1)/(x2-x1);
+        return round(((double)y2-y1)/(x2-x1));
     }
 
     private double yIntercept() {
-        return y1 - slope() * x1;
+        return round(y1 - slope() * x1);
     }
 
     private String equation(){
-        return "y = " + slope() + yIntercept();
+        if (yIntercept() > 0){
+            return "y = " + slope() + " + " + yIntercept();
+        } else if (yIntercept() == 0){
+            return "y = " + slope();
+        } else {
+            return "y = " + slope() +  yIntercept();
+        }
     }
 
     private String coordinateForX(double x) {
@@ -38,12 +44,11 @@ public class LinearEquation {
         info += "\nThe equation of the line between these points is " + equation();
         info += "\nThe slope of this line is: " + slope();
         info += "\nThe y-intercept of this line is: " + yIntercept();
-        info += "\nThe distance between the two points is: 12.65";
+        info += "\nThe distance between the two points is: " + distance();
         return info;
     }
 
-
-
-
-
+    private double round(double toRound){
+        return Math.round(toRound * 100) / 100.0;
+    }
 }
