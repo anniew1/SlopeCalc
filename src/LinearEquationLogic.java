@@ -39,10 +39,26 @@ public class LinearEquationLogic {
         }
     private void menu(){
         String option = "y";
+
+        System.out.println("");
+        System.out.println(linear.lineInfo());
+
+        System.out.println("");
+        System.out.print("Enter a value for x: ");
+        String pointOnLine = linear.coordinateForX(scan.nextInt());
+        scan.nextLine();
+
+        if (pointOnLine.substring(0, 1).equals("P")){
+            System.out.println(pointOnLine);
+        } else {
+            System.out.println("The point on the line is " + pointOnLine);
+        }
         while (option.equals("y")){
             System.out.println("");
-            System.out.println(linear.lineInfo());
-            option = "n";
+            System.out.print("Would you like to enter another pair of coordinates? y/n: ");
+            option = scan.nextLine();
+
+            start();
         }
 
     }
