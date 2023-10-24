@@ -45,7 +45,7 @@ public class LinearEquationLogic {
 
         System.out.println("");
         System.out.print("Enter a value for x: ");
-        String pointOnLine = linear.coordinateForX(scan.nextInt());
+        String pointOnLine = linear.coordinateForX(scan.nextDouble());
         scan.nextLine();
 
         if (pointOnLine.substring(0, 1).equals("P")){
@@ -53,12 +53,16 @@ public class LinearEquationLogic {
         } else {
             System.out.println("The point on the line is " + pointOnLine);
         }
+
         while (option.equals("y")){
             System.out.println("");
             System.out.print("Would you like to enter another pair of coordinates? y/n: ");
             option = scan.nextLine();
+            System.out.println("");
 
-            start();
+            if (option.equals("y")){
+                start();
+            }
         }
 
     }

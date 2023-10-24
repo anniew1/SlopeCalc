@@ -29,10 +29,10 @@ public class LinearEquation {
 
     private String equation() {
         String slope = (y2-y1) + "/" + (x2-x1);
-        if (y2-y1 == 0){
+        if (x2-x1 == 0){
+            return "x = " + x1;
+        } else if (y2-y1 == 0){
             return "y = " + yIntercept();
-        } else if (x2-x1 == 0){
-            return "y = undefined";
         } else
             if (yIntercept() > 0){
                 return "y = " + slope + "x + " + yIntercept();
@@ -47,7 +47,7 @@ public class LinearEquation {
         if (x2 - x1 == 0 && x != x1){
             return "Point not on line";
         }
-        return ("(" + x + ", " + (x * slope() + yIntercept()) + ")");
+        return ("(" + x + ", " + round((x * slope() + yIntercept())) + ")");
     }
 
     public String lineInfo() {
