@@ -43,15 +43,19 @@ public class LinearEquationLogic {
         System.out.println("");
         System.out.println(linear.lineInfo());
 
-        System.out.println("");
-        System.out.print("Enter a value for x: ");
-        String pointOnLine = linear.coordinateForX(scan.nextDouble());
-        scan.nextLine();
+        int position = linear.lineInfo().indexOf("The y-intercept of this line is: ");
+        if (!linear.lineInfo().substring(position + 33, position + 34).equals("u")) { //checking to see if line is vertical (skips if vertical)
 
-        if (pointOnLine.substring(0, 1).equals("P")){
-            System.out.println(pointOnLine);
-        } else {
-            System.out.println("The point on the line is " + pointOnLine);
+            System.out.println("");
+            System.out.print("Enter a value for x: ");
+            String pointOnLine = linear.coordinateForX(scan.nextDouble());
+            scan.nextLine();
+
+            if (pointOnLine.substring(0, 1).equals("P")) {
+                System.out.println(pointOnLine);
+            } else {
+                System.out.println("The point on the line is " + pointOnLine);
+            }
         }
 
         while (option.equals("y")){
@@ -62,6 +66,8 @@ public class LinearEquationLogic {
 
             if (option.equals("y")){
                 start();
+            } else {
+                System.exit(0);
             }
         }
 

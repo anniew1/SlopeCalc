@@ -12,26 +12,40 @@ public class LinearEquation {
         this.y2 = y2;
     }
 
-    private double distance() {
+    public double distance() {
         return round(Math.sqrt(Math.pow((x2-x1), 2.0) + (Math.pow((y2-y1), 2.0))));
     }
 
-    private double slope() {
+    public double slope() {
         if (y2-y1 == 0){
             return 0;
         }
         return round(((double)y2-y1)/(x2-x1));
     }
 
-    private double yIntercept() {
+    public double yIntercept() {
         return round(y1 - slope() * x1);
     }
 
-    private String equation() {
-        String slope = (y2-y1) + "/" + (x2-x1);
+    public String equation() {
         if (x2-x1 == 0){
-            return "x = " + x1;
-        } else if (y2-y1 == 0){
+            return "x = " + x1; }
+        String slope;
+        if (x2-x1 < 0 || y2-y1 < 0 && x2-x1 < 0){
+            slope = (int)((y2-y1) * -1.0) + "/" + (int)((x2-x1) * -1.0);
+        } else {
+        slope = (y2-y1) + "/" + (x2-x1);
+        }
+        if (((y2-y1)/(x2-x1 * 1.0)) == (int)((y2-y1)/(x2-x1))){
+            slope = Integer.toString((y2-y1)/(x2-x1));
+            if (slope.equals("-1")){
+                slope = "-";
+            }
+            if (slope.equals("1")){
+                slope = "";
+            }
+        }
+        if (y2-y1 == 0){
             return "y = " + yIntercept();
         } else
             if (yIntercept() > 0){
